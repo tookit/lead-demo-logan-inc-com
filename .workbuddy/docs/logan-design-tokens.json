@@ -1,0 +1,131 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "color": {
+    "brand": {
+      "red": { "value": "#E32227", "type": "color", "description": "Logo red — emphasis only, never default CTA" },
+      "red-soft": { "value": "#FDECEC", "type": "color" },
+      "blue": { "value": "#0E6FB8", "type": "color", "description": "Primary CTA, links, focus" },
+      "blue-hover": { "value": "#0B5C9C", "type": "color" },
+      "blue-active": { "value": "#08487B", "type": "color" },
+      "blue-deep": { "value": "#0A4A7C", "type": "color", "description": "Header bar, dark hero, careers band" },
+      "blue-soft": { "value": "#E8F2FB", "type": "color" },
+      "yellow": { "value": "#FFC72C", "type": "color", "description": "Trust badges, star ratings, EST 1969 stamp" },
+      "yellow-soft": { "value": "#FFF7DD", "type": "color" }
+    },
+    "ink": {
+      "900": { "value": "#0F1A24", "type": "color" },
+      "700": { "value": "#2C3A48", "type": "color" },
+      "500": { "value": "#5A6A7A", "type": "color" },
+      "300": { "value": "#A8B2BD", "type": "color" },
+      "100": { "value": "#DDE3EA", "type": "color" },
+      "50":  { "value": "#F2F4F7", "type": "color" }
+    },
+    "surface": {
+      "white": { "value": "#FFFFFF", "type": "color" },
+      "black": { "value": "#000000", "type": "color" },
+      "cool-mist": { "value": "#F4F7FA", "type": "color" }
+    },
+    "semantic": {
+      "success": { "value": "#1F8A4C", "type": "color" },
+      "warning": { "value": "#D08A1A", "type": "color" },
+      "danger":  { "value": "#C81E22", "type": "color" },
+      "info":    { "value": "{color.brand.blue}", "type": "color" }
+    }
+  },
+  "dimension": {
+    "space": {
+      "1":  { "value": "4px",  "type": "dimension" },
+      "2":  { "value": "8px",  "type": "dimension" },
+      "3":  { "value": "12px", "type": "dimension" },
+      "4":  { "value": "16px", "type": "dimension" },
+      "6":  { "value": "24px", "type": "dimension" },
+      "8":  { "value": "32px", "type": "dimension" },
+      "12": { "value": "48px", "type": "dimension" },
+      "16": { "value": "64px", "type": "dimension" },
+      "24": { "value": "96px", "type": "dimension" },
+      "32": { "value": "128px","type": "dimension" },
+      "48": { "value": "192px","type": "dimension" }
+    },
+    "radius": {
+      "sm":   { "value": "4px",   "type": "dimension" },
+      "md":   { "value": "8px",   "type": "dimension" },
+      "lg":   { "value": "16px",  "type": "dimension" },
+      "pill": { "value": "999px", "type": "dimension" }
+    },
+    "size": {
+      "container-max":    { "value": "1200px", "type": "dimension" },
+      "container-narrow": { "value": "960px",  "type": "dimension" },
+      "container-reading":{ "value": "720px",  "type": "dimension" },
+      "gutter-mobile":    { "value": "24px",   "type": "dimension" },
+      "gutter-tablet":    { "value": "32px",   "type": "dimension" },
+      "gutter-desktop":   { "value": "48px",   "type": "dimension" }
+    }
+  },
+  "breakpoint": {
+    "mobile":  { "value": "640px",  "type": "dimension" },
+    "tablet":  { "value": "1024px", "type": "dimension" },
+    "desktop": { "value": "1440px", "type": "dimension" }
+  },
+  "typography": {
+    "font-family": {
+      "primary": { "value": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", "type": "fontFamily" }
+    },
+    "weight": {
+      "regular":  { "value": 400, "type": "fontWeight" },
+      "medium":   { "value": 500, "type": "fontWeight" },
+      "semibold": { "value": 600, "type": "fontWeight" },
+      "bold":     { "value": 700, "type": "fontWeight" },
+      "extrabold":{ "value": 800, "type": "fontWeight" }
+    },
+    "size": {
+      "display-1": { "value": "72px", "type": "dimension" },
+      "display-2": { "value": "56px", "type": "dimension" },
+      "h1": { "value": "40px", "type": "dimension" },
+      "h2": { "value": "32px", "type": "dimension" },
+      "h3": { "value": "24px", "type": "dimension" },
+      "h4": { "value": "20px", "type": "dimension" },
+      "body-lg": { "value": "18px", "type": "dimension" },
+      "body": { "value": "16px", "type": "dimension" },
+      "body-sm": { "value": "14px", "type": "dimension" },
+      "label": { "value": "14px", "type": "dimension" },
+      "caption": { "value": "12px", "type": "dimension" }
+    },
+    "line-height": {
+      "display-1": { "value": "80px",  "type": "dimension" },
+      "display-2": { "value": "64px",  "type": "dimension" },
+      "h1":        { "value": "48px",  "type": "dimension" },
+      "h2":        { "value": "40px",  "type": "dimension" },
+      "h3":        { "value": "32px",  "type": "dimension" },
+      "h4":        { "value": "28px",  "type": "dimension" },
+      "body-lg":   { "value": "28px",  "type": "dimension" },
+      "body":      { "value": "26px",  "type": "dimension" },
+      "body-sm":   { "value": "22px",  "type": "dimension" },
+      "label":     { "value": "20px",  "type": "dimension" },
+      "caption":   { "value": "18px",  "type": "dimension" }
+    },
+    "letter-spacing": {
+      "display-1": { "value": "-0.02em",  "type": "dimension" },
+      "display-2": { "value": "-0.015em", "type": "dimension" },
+      "h1":        { "value": "-0.01em",  "type": "dimension" },
+      "h2":        { "value": "-0.01em",  "type": "dimension" },
+      "h3":        { "value": "-0.005em", "type": "dimension" },
+      "label":     { "value": "0.02em",   "type": "dimension" }
+    }
+  },
+  "shadow": {
+    "sm": { "value": "0 1px 2px rgba(15, 26, 36, 0.06)",  "type": "shadow" },
+    "md": { "value": "0 4px 12px rgba(15, 26, 36, 0.08)", "type": "shadow" },
+    "lg": { "value": "0 8px 24px rgba(15, 26, 36, 0.10)", "type": "shadow" }
+  },
+  "motion": {
+    "duration": {
+      "fast":   { "value": "150ms", "type": "duration" },
+      "normal": { "value": "200ms", "type": "duration" },
+      "slow":   { "value": "300ms", "type": "duration" }
+    },
+    "ease": {
+      "out":  { "value": "cubic-bezier(0.16, 1, 0.3, 1)", "type": "cubicBezier" },
+      "inOut":{ "value": "cubic-bezier(0.65, 0, 0.35, 1)","type": "cubicBezier" }
+    }
+  }
+}

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Logan Services | Schedule HVAC & Plumbing Service</title>
+<meta name="description" content="Contact Logan Services for HVAC, plumbing, and comfort services in Dayton, Columbus, Cincinnati & Northern Kentucky. Free estimates, 24/7 emergency service.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/shared.css">
+<style>
+/* ============================================================
+   Contact Page — Page-Specific Styles
+   ============================================================ */
+
+/* Page Hero */
+.page-hero {
+  background: var(--brand-blue-deep);
+  padding: var(--space-24) 0 var(--space-16);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent-yellow);
+}
+.page-hero .container { position: relative; z-index: 2; }
+.page-hero__eyebrow { color: var(--accent-yellow); margin-bottom: var(--space-4); }
+.page-hero__title {
+  font-size: 56px; line-height: 64px; font-weight: 800;
+  color: var(--white); letter-spacing: -0.015em;
+  max-width: 760px; margin-bottom: var(--space-6);
+}
+.page-hero__subhead {
+  font-size: 18px; line-height: 28px;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+}
+@media (max-width: 1023px) {
+  .page-hero { padding: var(--space-16) 0 var(--space-12); }
+  .page-hero__title { font-size: 40px; line-height: 48px; }
+}
+@media (max-width: 639px) {
+  .page-hero__title { font-size: 32px; line-height: 40px; }
+}
+.page-hero__breadcrumb {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: 13px; color: rgba(255,255,255,0.6);
+  margin-bottom: var(--space-6);
+}
+.page-hero__breadcrumb a { color: rgba(255,255,255,0.8); }
+.page-hero__breadcrumb a:hover { color: var(--accent-yellow); }
+.page-hero__breadcrumb svg { width: 14px; height: 14px; opacity: 0.5; }
+
+/* Quick contact options */
+.quick-contact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-24);
+}
+@media (max-width: 1023px) {
+  .quick-contact { grid-template-columns: 1fr; }
+}
+.quick-contact__card {
+  background: var(--white);
+  border: 1px solid var(--ink-100);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  transition: all 200ms var(--ease-out);
+}
+.quick-contact__card:hover {
+  border-color: var(--brand-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.quick-contact__icon {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--brand-blue-soft);
+  color: var(--brand-blue);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.quick-contact__icon svg { width: 24px; height: 24px; }
+.quick-contact__card--emergency .quick-contact__icon {
+  background: var(--brand-red-soft);
+  color: var(--brand-red);
+}
+.quick-contact__label {
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--ink-500);
+  margin-bottom: 2px;
+}
+.quick-contact__value {
+  font-size: 18px; font-weight: 700;
+  color: var(--ink-900);
+}
+.quick-contact__value a { color: var(--ink-900); }
+.quick-contact__value a:hover { color: var(--brand-blue); }
+
+/* Contact form section */
+.contact-section .contact-layout {
+  align-items: start;
+}
+.contact-info__card--full {
+  background: var(--brand-blue-deep);
+  color: var(--white);
+}
+.contact-info__card--full h4 { color: var(--white); }
+.contact-info__card--full h4 svg { color: var(--accent-yellow); }
+.contact-info__card--full p { color: rgba(255,255,255,0.8); }
+.contact-info__card--full a { color: var(--accent-yellow); }
+.contact-info__card--full .contact-info__hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 13px;
+}
+.contact-info__card--full .contact-info__hours dt {
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+}
+.contact-info__card--full .contact-info__hours dd {
+  color: var(--white);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Location detail cards */
+.location-detail {
+  background: var(--white);
+  border: 1px solid var(--ink-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 200ms var(--ease-out);
+}
+.location-detail:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.location-detail__image {
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+}
+.location-detail__image img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.location-detail__body {
+  padding: var(--space-6);
+}
+.location-detail__city {
+  font-size: 24px; font-weight: 700;
+  color: var(--ink-900);
+  margin-bottom: var(--space-2);
+}
+.location-detail__address {
+  font-size: 15px; line-height: 24px;
+  color: var(--ink-500);
+  margin-bottom: var(--space-3);
+  display: flex; align-items: flex-start; gap: var(--space-2);
+}
+.location-detail__address svg {
+  width: 18px; height: 18px;
+  color: var(--brand-blue);
+  flex-shrink: 0; margin-top: 3px;
+}
+.location-detail__phone {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: 18px; font-weight: 700;
+  color: var(--brand-blue);
+  margin-bottom: var(--space-4);
+}
+.location-detail__phone svg {
+  width: 18px; height: 18px;
+}
+.location-detail__hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-1) var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--ink-50);
+  font-size: 14px;
+}
+.location-detail__hours dt {
+  color: var(--ink-500);
+}
+.location-detail__hours dd {
+  font-weight: 600;
+  color: var(--ink-700);
+  text-align: right;
+}
+.location-detail__cta {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+.location-detail__map {
+  width: 100%;
+  height: 200px;
+  border: 0;
+  border-radius: var(--radius-md);
+  margin-top: var(--space-4);
+}
+
+/* Service area */
+.service-area {
+  background: var(--brand-blue-deep);
+  text-align: center;
+  padding: var(--space-24) 0;
+  position: relative;
+  overflow: hidden;
+}
+.service-area::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent-yellow);
+}
+.service-area .eyebrow { color: var(--accent-yellow); }
+.service-area h2 { color: var(--white); }
+.service-area p { color: rgba(255,255,255,0.8); }
+.service-area__cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.service-area__city {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  transition: all 200ms;
+}
+.service-area__city:hover {
+  background: rgba(255,199,44,0.15);
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Utility Bar -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__left">
+      <a href="tel:8005642611" class="utility-bar__phone tabular">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (800) 564-2611
+      </a>
+      <a href="contact.html">Service Areas</a>
+    </div>
+    <div class="utility-bar__right">
+      <a href="contact.html">Schedule Service</a>
+      <a href="#">Pay Online</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="header__logo" aria-label="Logan Services Home">
+      <img src=".workbuddy/assets/logo/logan-logo.png" alt="Logan Services">
+    </a>
+    <nav class="header__nav" aria-label="Primary navigation">
+      <a href="service.html">Services</a>
+      <a href="service.html#cooling">Cooling</a>
+      <a href="service.html#heating">Heating</a>
+      <a href="service.html#plumbing">Plumbing</a>
+      <a href="about.html">About</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="contact.html" style="color: var(--brand-blue);">Contact</a>
+    </nav>
+    <div class="header__actions">
+      <svg class="header__search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <a href="contact.html" class="btn btn--primary">Book Online</a>
+      <svg class="header__hamburger" id="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Open menu"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__header">
+    <img src=".workbuddy/assets/logo/logan-logo.png" alt="Logan Services">
+    <svg class="mobile-menu__close" id="mobileMenuClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Close menu"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+    <a href="service.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>Services</a>
+    <a href="service.html#heating"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>Heating</a>
+    <a href="service.html#cooling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>Cooling</a>
+    <a href="service.html#plumbing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Plumbing</a>
+    <a href="service.html#sewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>Sewer & Drain</a>
+    <a href="service.html#air-quality"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>Air Quality</a>
+    <a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Us</a>
+    <a href="index.html#certified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Certifications</a>
+    <a href="index.html#reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews</a>
+    <a href="index.html#offers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/></svg>Special Offers</a>
+    <a href="index.html#careers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/></svg>Careers</a>
+    <a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+  </nav>
+  <div class="mobile-menu__footer">
+    <a href="tel:8005642611" class="btn btn--primary btn--block">Call (800) 564-2611</a>
+    <a href="contact.html" class="btn btn--ghost-blue btn--block">Book Online</a>
+  </div>
+</aside>
+
+<!-- Sticky mobile phone CTA -->
+<div class="mobile-phone-cta">
+  <a href="tel:8005642611">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (800) 564-2611
+  </a>
+</div>
+
+<main id="main">
+
+<!-- ============================================================
+     Page Hero
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__breadcrumb fade-in-up">
+      <a href="index.html">Home</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Contact</span>
+    </div>
+    <span class="eyebrow eyebrow--yellow page-hero__eyebrow fade-in-up">Get in Touch</span>
+    <h1 class="page-hero__title fade-in-up">Schedule service or ask a question.</h1>
+    <p class="page-hero__subhead fade-in-up">Fill out the form below, give us a call, or stop by one of our three locations. We respond to all online requests within one business hour.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     Quick Contact Options
+     ============================================================ -->
+<section class="section" style="padding-top: var(--space-16); padding-bottom: 0;">
+  <div class="container">
+    <div class="quick-contact">
+      <div class="quick-contact__card fade-in-up">
+        <div class="quick-contact__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="quick-contact__label">Call Us</div>
+          <div class="quick-contact__value"><a href="tel:8005642611" class="tabular">(800) 564-2611</a></div>
+        </div>
+      </div>
+      <div class="quick-contact__card quick-contact__card--emergency fade-in-up">
+        <div class="quick-contact__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="quick-contact__label">24/7 Emergency</div>
+          <div class="quick-contact__value"><a href="tel:8005642611" class="tabular">(800) 564-2611</a></div>
+        </div>
+      </div>
+      <div class="quick-contact__card fade-in-up">
+        <div class="quick-contact__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="quick-contact__label">Email</div>
+          <div class="quick-contact__value"><a href="mailto:service@logan-inc.com">service@logan-inc.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Contact Form + Info
+     ============================================================ -->
+<section class="section contact-section">
+  <div class="container">
+    <div class="section-header fade-in-up">
+      <span class="eyebrow">Schedule Service</span>
+      <h2 class="h2">Request your free in-home estimate.</h2>
+      <p class="body-lg">Fill out the form and we'll call you back within one business hour. For emergencies, please call <a href="tel:8005642611" class="tabular">(800) 564-2611</a> &mdash; we're available 24/7.</p>
+    </div>
+    <div class="contact-layout">
+      <form class="contact-form fade-in-up" onsubmit="event.preventDefault(); alert('Thank you! We will contact you within one business hour.'); this.reset();">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" placeholder="John" required aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" placeholder="Smith" required aria-required="true">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(937) 555-0000" required aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="serviceType">Service Type <span class="required">*</span></label>
+            <select id="serviceType" name="serviceType" required aria-required="true">
+              <option value="">Select a service...</option>
+              <option value="ac-repair">A/C Repair</option>
+              <option value="ac-install">A/C Installation</option>
+              <option value="heating">Heating / Furnace</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="drain">Sewer & Drain</option>
+              <option value="water-heater">Water Heater</option>
+              <option value="air-quality">Indoor Air Quality</option>
+              <option value="maintenance">Maintenance Plan</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="zip">ZIP Code <span class="required">*</span></label>
+            <input type="text" id="zip" name="zip" placeholder="45402" pattern="[0-9]{5}" required aria-required="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="preferredTime">Preferred Contact Time</label>
+          <select id="preferredTime" name="preferredTime">
+            <option value="anytime">Anytime</option>
+            <option value="morning">Morning (7am - 12pm)</option>
+            <option value="afternoon">Afternoon (12pm - 5pm)</option>
+            <option value="evening">Evening (5pm - 8pm)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about the issue you're experiencing, or any questions you have..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--lg btn--block">Submit Request</button>
+        <p style="font-size: 13px; color: var(--ink-300); text-align: center; margin-top: var(--space-4);">
+          By submitting, you agree to be contacted by Logan Services. We respect your privacy and never share your information.
+        </p>
+      </form>
+      <div class="contact-info fade-in-up">
+        <div class="contact-info__card contact-info__card--full">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Office Hours
+          </h4>
+          <p>Visit any of our locations during business hours, or call us 24/7 for emergencies.</p>
+          <dl class="contact-info__hours">
+            <dt>Mon &ndash; Fri</dt><dd>7:00 AM &ndash; 9:00 PM</dd>
+            <dt>Saturday</dt><dd>7:00 AM &ndash; 9:00 PM</dd>
+            <dt>Sunday</dt><dd>8:00 AM &ndash; 5:00 PM</dd>
+            <dt>Emergency</dt><dd>24 / 7 / 365</dd>
+          </dl>
+        </div>
+        <div class="contact-info__card">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Dayton HQ
+          </h4>
+          <p>3750 Little York Rd<br>Dayton, OH 45414</p>
+          <a href="tel:9372222611" class="tabular">(937) 222-2611</a>
+        </div>
+        <div class="contact-info__card">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Columbus
+          </h4>
+          <p>4255 Groves Rd<br>Columbus, OH 43232</p>
+          <a href="tel:6142222611" class="tabular">(614) 222-2611</a>
+        </div>
+        <div class="contact-info__card">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cincinnati / NKY
+          </h4>
+          <p>8168 Beechmont Ave<br>Cincinnati, OH 45255</p>
+          <a href="tel:5132222611" class="tabular">(513) 222-2611</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Location Detail Cards
+     ============================================================ -->
+<section class="section section--mist">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow">Our Locations</span>
+      <h2 class="h2">Three branches, one standard of service.</h2>
+      <p class="body-lg">Visit us in person or call your local team directly.</p>
+    </div>
+    <div class="locations-grid">
+      <!-- Dayton -->
+      <div class="location-detail fade-in-up" id="dayton">
+        <div class="location-detail__image">
+          <img src=".workbuddy/assets/locations/dayton.webp" alt="Dayton, Ohio">
+        </div>
+        <div class="location-detail__body">
+          <h3 class="location-detail__city">Dayton, OH</h3>
+          <p class="location-detail__address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            3750 Little York Rd, Dayton, OH 45414
+          </p>
+          <p class="location-detail__phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:9372222611" class="tabular">(937) 222-2611</a>
+          </p>
+          <dl class="location-detail__hours">
+            <dt>Mon &ndash; Sat</dt><dd>7am &ndash; 9pm</dd>
+            <dt>Sunday</dt><dd>8am &ndash; 5pm</dd>
+            <dt>Emergency</dt><dd>24/7</dd>
+          </dl>
+          <div class="location-detail__cta">
+            <a href="tel:9372222611" class="btn btn--primary">Call Now</a>
+            <a href="contact.html" class="btn btn--ghost-blue">Book Online</a>
+          </div>
+        </div>
+      </div>
+      <!-- Columbus -->
+      <div class="location-detail fade-in-up" id="columbus">
+        <div class="location-detail__image">
+          <img src=".workbuddy/assets/locations/columbus.webp" alt="Columbus, Ohio">
+        </div>
+        <div class="location-detail__body">
+          <h3 class="location-detail__city">Columbus, OH</h3>
+          <p class="location-detail__address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            4255 Groves Rd, Columbus, OH 43232
+          </p>
+          <p class="location-detail__phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:6142222611" class="tabular">(614) 222-2611</a>
+          </p>
+          <dl class="location-detail__hours">
+            <dt>Mon &ndash; Sat</dt><dd>7am &ndash; 9pm</dd>
+            <dt>Sunday</dt><dd>8am &ndash; 5pm</dd>
+            <dt>Emergency</dt><dd>24/7</dd>
+          </dl>
+          <div class="location-detail__cta">
+            <a href="tel:6142222611" class="btn btn--primary">Call Now</a>
+            <a href="contact.html" class="btn btn--ghost-blue">Book Online</a>
+          </div>
+        </div>
+      </div>
+      <!-- Cincinnati -->
+      <div class="location-detail fade-in-up" id="cincinnati">
+        <div class="location-detail__image">
+          <img src=".workbuddy/assets/locations/cincinnati.png" alt="Cincinnati, Ohio">
+        </div>
+        <div class="location-detail__body">
+          <h3 class="location-detail__city">Cincinnati / NKY</h3>
+          <p class="location-detail__address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            8168 Beechmont Ave, Cincinnati, OH 45255
+          </p>
+          <p class="location-detail__phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:5132222611" class="tabular">(513) 222-2611</a>
+          </p>
+          <dl class="location-detail__hours">
+            <dt>Mon &ndash; Sat</dt><dd>7am &ndash; 9pm</dd>
+            <dt>Sunday</dt><dd>8am &ndash; 5pm</dd>
+            <dt>Emergency</dt><dd>24/7</dd>
+          </dl>
+          <div class="location-detail__cta">
+            <a href="tel:5132222611" class="btn btn--primary">Call Now</a>
+            <a href="contact.html" class="btn btn--ghost-blue">Book Online</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Service Area
+     ============================================================ -->
+<section class="service-area">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow eyebrow--yellow">Service Area</span>
+      <h2 class="h2">Proudly serving the Ohio Valley.</h2>
+      <p class="body-lg">From our three branches, we cover a 60-mile radius across southwest and central Ohio plus Northern Kentucky. Don't see your city? Give us a call &mdash; we may still cover your area.</p>
+    </div>
+    <div class="service-area__cities fade-in-up">
+      <span class="service-area__city">Dayton</span>
+      <span class="service-area__city">Centerville</span>
+      <span class="service-area__city">Kettering</span>
+      <span class="service-area__city">Beavercreek</span>
+      <span class="service-area__city">Huber Heights</span>
+      <span class="service-area__city">Troy</span>
+      <span class="service-area__city">Piqua</span>
+      <span class="service-area__city">Springfield</span>
+      <span class="service-area__city">Columbus</span>
+      <span class="service-area__city">Dublin</span>
+      <span class="service-area__city">Hilliard</span>
+      <span class="service-area__city">Grove City</span>
+      <span class="service-area__city">Westerville</span>
+      <span class="service-area__city">Gahanna</span>
+      <span class="service-area__city">Reynoldsburg</span>
+      <span class="service-area__city">Pickerington</span>
+      <span class="service-area__city">Cincinnati</span>
+      <span class="service-area__city">Covington, KY</span>
+      <span class="service-area__city">Newport, KY</span>
+      <span class="service-area__city">Florence, KY</span>
+      <span class="service-area__city">Mason</span>
+      <span class="service-area__city">West Chester</span>
+      <span class="service-area__city">Loveland</span>
+      <span class="service-area__city">Anderson Township</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2">Before you call.</h2>
+    </div>
+    <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+      <style>
+        .faq-item { border-bottom: 1px solid var(--ink-100); }
+        .faq-item__question {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: var(--space-6) 0; cursor: pointer;
+          font-size: 18px; font-weight: 600; color: var(--ink-900);
+          transition: color 200ms; gap: var(--space-4);
+        }
+        .faq-item__question:hover { color: var(--brand-blue); }
+        .faq-item__question svg { width: 24px; height: 24px; color: var(--brand-blue); flex-shrink: 0; transition: transform 300ms var(--ease-out); }
+        .faq-item--open .faq-item__question svg { transform: rotate(180deg); }
+        .faq-item__answer { max-height: 0; overflow: hidden; transition: max-height 300ms var(--ease-out); }
+        .faq-item--open .faq-item__answer { max-height: 300px; }
+        .faq-item__answer-inner { padding: 0 0 var(--space-6); font-size: 16px; line-height: 26px; color: var(--ink-500); }
+      </style>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>How quickly can you respond to an emergency call?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">For emergency calls (no heat in winter, no A/C in extreme heat, burst pipes, gas leaks), we dispatch a technician within 2 hours in most cases. Our emergency line is staffed 24/7 &mdash; call (800) 564-2611 anytime.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>What information should I have ready when I call?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">It helps to have: your address and ZIP code, a brief description of the issue, the brand and approximate age of your equipment (if known), and whether this is an emergency. But don't worry &mdash; our dispatchers will walk you through everything.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>Do you offer free estimates?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Yes. In-home estimates for new system installations (A/C, furnace, heat pump, water heater) are always free. For repair diagnostics, there's a $79 flat service call fee that includes inspection and a written quote.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>Can I book online or do I need to call?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Both! You can fill out the form on this page and we'll call you back within one business hour to confirm a time. Or call (800) 564-2611 to speak with a dispatcher immediately. For emergencies, always call &mdash; we answer 24/7.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src=".workbuddy/assets/logo/logan-logo.png" alt="Logan Services">
+        <p>Family-owned home comfort company serving the Ohio Valley since 1969. Heating, cooling, plumbing, and indoor air quality &mdash; done right, by neighbors.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.45-5.18a2.78 2.78 0 0 0-1.95-2C18.88 4.35 12 4.35 12 4.35s-6.88 0-8.6.47a2.78 2.78 0 0 0-1.95 2C1 8.5 1 12 1 12s0 3.5.45 5.18a2.78 2.78 0 0 0 1.95 2c1.72.47 8.6.47 8.6.47s6.88 0 8.6-.47a2.78 2.78 0 0 0 1.95-2C23 15.5 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service.html#cooling">A/C Repair</a></li>
+          <li><a href="service.html#heating">Heating</a></li>
+          <li><a href="service.html#heating">Heat Pumps</a></li>
+          <li><a href="service.html#plumbing">Plumbing</a></li>
+          <li><a href="service.html#sewer">Sewer & Drain</a></li>
+          <li><a href="service.html#water-heaters">Water Heaters</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html#careers">Careers</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="service.html#offers">Special Offers</a></li>
+          <li><a href="#">Financing</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Maintenance Plans</a></li>
+          <li><a href="#">Filter Store</a></li>
+          <li><a href="#">Pay Online</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Service Areas</h4>
+        <ul>
+          <li><a href="contact.html#dayton">Dayton, OH</a></li>
+          <li><a href="contact.html#columbus">Columbus, OH</a></li>
+          <li><a href="contact.html#cincinnati">Cincinnati, OH</a></li>
+          <li><a href="contact.html#cincinnati">Northern Kentucky</a></li>
+          <li><a href="contact.html">All Areas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__bottom-left">
+        &copy; 2025 Logan Services. All rights reserved.
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+      <div class="footer__badges">
+        <img src=".workbuddy/assets/awards/nate.png" alt="NATE Certified">
+        <img src=".workbuddy/assets/awards/google-guaranteed.png" alt="Google Guaranteed">
+        <img src=".workbuddy/assets/awards/trane-dealer.png" alt="#1 Trane Dealer">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/shared.js"></script>
+</body>
+</html>

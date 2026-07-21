@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Logan Services — HVAC, Plumbing & Comfort</title>
+<meta name="description" content="Full-service heating, cooling, plumbing, drain, air quality, and water heater services across the Ohio Valley. Free estimates, same-day service, NATE-certified techs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/shared.css">
+<style>
+/* ============================================================
+   Services Page — Page-Specific Styles
+   ============================================================ */
+
+/* Page Hero */
+.page-hero {
+  background: var(--brand-blue-deep);
+  padding: var(--space-24) 0 var(--space-16);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent-yellow);
+}
+.page-hero .container { position: relative; z-index: 2; }
+.page-hero__eyebrow { color: var(--accent-yellow); margin-bottom: var(--space-4); }
+.page-hero__title {
+  font-size: 56px; line-height: 64px; font-weight: 800;
+  color: var(--white); letter-spacing: -0.015em;
+  max-width: 760px; margin-bottom: var(--space-6);
+}
+.page-hero__subhead {
+  font-size: 18px; line-height: 28px;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+}
+@media (max-width: 1023px) {
+  .page-hero { padding: var(--space-16) 0 var(--space-12); }
+  .page-hero__title { font-size: 40px; line-height: 48px; }
+}
+@media (max-width: 639px) {
+  .page-hero__title { font-size: 32px; line-height: 40px; }
+}
+.page-hero__breadcrumb {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: 13px; color: rgba(255,255,255,0.6);
+  margin-bottom: var(--space-6);
+}
+.page-hero__breadcrumb a { color: rgba(255,255,255,0.8); }
+.page-hero__breadcrumb a:hover { color: var(--accent-yellow); }
+.page-hero__breadcrumb svg { width: 14px; height: 14px; opacity: 0.5; }
+
+/* Service Detail Block */
+.service-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+  margin-bottom: var(--space-24);
+}
+.service-detail:nth-child(even) .service-detail__image {
+  order: 2;
+}
+@media (max-width: 1023px) {
+  .service-detail { grid-template-columns: 1fr; gap: var(--space-12); }
+  .service-detail:nth-child(even) .service-detail__image { order: 0; }
+  .service-detail { margin-bottom: var(--space-16); }
+}
+.service-detail__image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 5 / 4;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.service-detail__image img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.service-detail__image-badge {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  background: var(--accent-yellow);
+  color: var(--ink-900);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+.service-detail__content .eyebrow { color: var(--brand-blue); }
+.service-detail__content h2 {
+  font-size: 32px; line-height: 40px;
+  font-weight: 700; color: var(--ink-900);
+  margin-bottom: var(--space-4);
+}
+.service-detail__content > p {
+  font-size: 17px; line-height: 28px;
+  color: var(--ink-700);
+  margin-bottom: var(--space-6);
+}
+.service-detail__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+@media (max-width: 639px) {
+  .service-detail__list { grid-template-columns: 1fr; }
+}
+.service-detail__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 15px;
+  color: var(--ink-700);
+  padding: var(--space-1) 0;
+}
+.service-detail__list svg {
+  width: 18px; height: 18px;
+  color: var(--success);
+  flex-shrink: 0;
+}
+.service-detail__cta {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Process Steps */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  counter-reset: step;
+}
+@media (max-width: 1023px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 639px) {
+  .process-grid { grid-template-columns: 1fr; }
+}
+.process-card {
+  background: var(--white);
+  border: 1px solid var(--ink-100);
+  border-radius: var(--radius-md);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  position: relative;
+  transition: all 200ms var(--ease-out);
+}
+.process-card:hover {
+  border-color: var(--brand-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.process-card__number {
+  counter-increment: step;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  color: var(--white);
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+}
+.process-card__number::before {
+  content: counter(step);
+}
+.process-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin-bottom: var(--space-2);
+}
+.process-card p {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--ink-500);
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--ink-100);
+}
+.faq-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6) 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-900);
+  transition: color 200ms;
+  gap: var(--space-4);
+}
+.faq-item__question:hover { color: var(--brand-blue); }
+.faq-item__question svg {
+  width: 24px; height: 24px;
+  color: var(--brand-blue);
+  flex-shrink: 0;
+  transition: transform 300ms var(--ease-out);
+}
+.faq-item--open .faq-item__question svg {
+  transform: rotate(180deg);
+}
+.faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms var(--ease-out);
+}
+.faq-item--open .faq-item__answer {
+  max-height: 300px;
+}
+.faq-item__answer-inner {
+  padding: 0 0 var(--space-6);
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--ink-500);
+}
+
+/* Emergency CTA band */
+.emergency-cta {
+  background: var(--brand-red);
+  text-align: center;
+  padding: var(--space-16) 0;
+}
+.emergency-cta h2 {
+  color: var(--white);
+  font-size: 36px;
+  margin-bottom: var(--space-4);
+}
+.emergency-cta p {
+  color: rgba(255,255,255,0.9);
+  font-size: 18px;
+  margin-bottom: var(--space-8);
+}
+.emergency-cta .btn--lg {
+  background: var(--white);
+  color: var(--brand-red);
+}
+.emergency-cta .btn--lg:hover {
+  background: var(--ink-900);
+  color: var(--white);
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Utility Bar -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__left">
+      <a href="tel:8005642611" class="utility-bar__phone tabular">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (800) 564-2611
+      </a>
+      <a href="contact.html">Service Areas</a>
+    </div>
+    <div class="utility-bar__right">
+      <a href="contact.html">Schedule Service</a>
+      <a href="#">Pay Online</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="header__logo" aria-label="Logan Services Home">
+      <img src=".workbuddy/assets/logo/logan-logo.png" alt="Logan Services">
+    </a>
+    <nav class="header__nav" aria-label="Primary navigation">
+      <a href="service.html" style="color: var(--brand-blue);">Services</a>
+      <a href="service.html#cooling">Cooling</a>
+      <a href="service.html#heating">Heating</a>
+      <a href="service.html#plumbing">Plumbing</a>
+      <a href="about.html">About</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header__actions">
+      <svg class="header__search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <a href="contact.html" class="btn btn--primary">Book Online</a>
+      <svg class="header__hamburger" id="hamburger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Open menu"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu__header">
+    <img src=".workbuddy/assets/logo/logan-logo.png" alt="Logan Services">
+    <svg class="mobile-menu__close" id="mobileMenuClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Close menu"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </div>
+  <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+    <a href="service.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>Services</a>
+    <a href="service.html#heating"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>Heating</a>
+    <a href="service.html#cooling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>Cooling</a>
+    <a href="service.html#plumbing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Plumbing</a>
+    <a href="service.html#sewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>Sewer & Drain</a>
+    <a href="service.html#air-quality"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>Air Quality</a>
+    <a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>About Us</a>
+    <a href="index.html#certified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Certifications</a>
+    <a href="index.html#reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Reviews</a>
+    <a href="index.html#offers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4z"/></svg>Special Offers</a>
+    <a href="index.html#careers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/></svg>Careers</a>
+    <a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+  </nav>
+  <div class="mobile-menu__footer">
+    <a href="tel:8005642611" class="btn btn--primary btn--block">Call (800) 564-2611</a>
+    <a href="contact.html" class="btn btn--ghost-blue btn--block">Book Online</a>
+  </div>
+</aside>
+
+<!-- Sticky mobile phone CTA -->
+<div class="mobile-phone-cta">
+  <a href="tel:8005642611">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (800) 564-2611
+  </a>
+</div>
+
+<main id="main">
+
+<!-- ============================================================
+     Page Hero
+     ============================================================ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero__breadcrumb fade-in-up">
+      <a href="index.html">Home</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Services</span>
+    </div>
+    <span class="eyebrow eyebrow--yellow page-hero__eyebrow fade-in-up">What We Do</span>
+    <h1 class="page-hero__title fade-in-up">Everything your home needs to stay comfortable.</h1>
+    <p class="page-hero__subhead fade-in-up">Heating, cooling, plumbing, drains, air quality, and water heaters &mdash; all from one trusted team. NATE-certified techs, same-day service, upfront pricing.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     Service Detail Sections
+     ============================================================ -->
+<section class="section" id="cooling">
+  <div class="container">
+    <div class="service-detail">
+      <div class="service-detail__image fade-in-up">
+        <div class="service-detail__image-badge">Most Requested</div>
+        <img src=".workbuddy/assets/hero/furnace-repair.jpg" alt="Air conditioning repair and installation">
+      </div>
+      <div class="service-detail__content fade-in-up">
+        <span class="eyebrow">Cooling</span>
+        <h2>Air Conditioning Repair &amp; Installation</h2>
+        <p>When the Ohio summer hits 90&deg;F with humidity, you need A/C that works. Our NATE-certified techs repair all brands, install high-efficiency Trane and Mitsubishi systems, and offer 24/7 emergency service when you need it most.</p>
+        <ul class="service-detail__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>A/C Repair &amp; Tune-Ups</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>New System Installation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Heat Pump Service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ductless Mini-Splits</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Refrigerant Recharge</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Smart Thermostat Install</li>
+        </ul>
+        <div class="service-detail__cta">
+          <a href="contact.html" class="btn btn--primary btn--lg">Book A/C Service</a>
+          <a href="tel:8005642611" class="btn btn--ghost-blue btn--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (800) 564-2611
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist" id="heating">
+  <div class="container">
+    <div class="service-detail">
+      <div class="service-detail__image fade-in-up">
+        <div class="service-detail__image-badge">Winter Ready</div>
+        <img src=".workbuddy/assets/hero/installer-van.webp" alt="Furnace and heating service">
+      </div>
+      <div class="service-detail__content fade-in-up">
+        <span class="eyebrow">Heating</span>
+        <h2>Furnace, Heat Pump &amp; Boiler Service</h2>
+        <p>Ohio winters don't mess around. Whether you need a furnace repair at 11 PM or a full system replacement, our techs are factory-trained on Trane, Carrier, Bryant, and more. We'll keep your home warm and your energy bills manageable.</p>
+        <ul class="service-detail__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Furnace Repair &amp; Install</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Heat Pump Installation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Boiler Service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Winter Tune-Ups</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Emergency Heat Repair</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Carbon Monoxide Testing</li>
+        </ul>
+        <div class="service-detail__cta">
+          <a href="contact.html" class="btn btn--primary btn--lg">Book Heating Service</a>
+          <a href="contact.html" class="btn btn--ghost-blue btn--lg">Get a Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="plumbing">
+  <div class="container">
+    <div class="service-detail">
+      <div class="service-detail__image fade-in-up">
+        <div class="service-detail__image-badge">Same-Day</div>
+        <img src=".workbuddy/assets/hero/drain-cleaning.jpg" alt="Plumbing and drain service">
+      </div>
+      <div class="service-detail__content fade-in-up">
+        <span class="eyebrow">Plumbing</span>
+        <h2>Plumbing Repair &amp; Installation</h2>
+        <p>From leaky faucets to full repipes, our master plumbers handle it all. We use camera inspection to diagnose hidden issues, offer trenchless sewer repair, and back every job with a satisfaction guarantee.</p>
+        <ul class="service-detail__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Leak Detection &amp; Repair</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Faucet &amp; Fixture Install</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Garbage Disposals</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Toilet Repair &amp; Install</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Repiping &amp; Remodels</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Camera Inspection</li>
+        </ul>
+        <div class="service-detail__cta">
+          <a href="contact.html" class="btn btn--primary btn--lg">Book Plumbing Service</a>
+          <a href="contact.html" class="btn btn--ghost-blue btn--lg">$79 Service Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist" id="sewer">
+  <div class="container">
+    <div class="service-detail">
+      <div class="service-detail__image fade-in-up">
+        <div class="service-detail__image-badge">$99 Flat Rate</div>
+        <img src=".workbuddy/assets/hero/blue-van.webp" alt="Sewer and drain cleaning">
+      </div>
+      <div class="service-detail__content fade-in-up">
+        <span class="eyebrow">Sewer &amp; Drain</span>
+        <h2>Drain Cleaning &amp; Sewer Repair</h2>
+        <p>Backed-up drain? Slow-flushing toilet? We'll clear it the same day for $99 &mdash; flat rate, no surprises. For bigger issues, we offer trenchless sewer line repair and hydro-jetting to get things flowing fast.</p>
+        <ul class="service-detail__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Drain Cleaning ($99 Flat)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hydro-Jetting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sewer Line Repair</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Trenchless Replacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sewer Camera Inspection</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Root Removal</li>
+        </ul>
+        <div class="service-detail__cta">
+          <a href="contact.html" class="btn btn--primary btn--lg">Book Drain Service</a>
+          <a href="tel:8005642611" class="btn btn--ghost-blue btn--lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (800) 564-2611
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="air-quality">
+  <div class="container">
+    <div class="service-detail">
+      <div class="service-detail__image fade-in-up">
+        <div class="service-detail__image-badge">Health First</div>
+        <img src=".workbuddy/assets/awards/nate.png" alt="Indoor air quality" style="object-fit: contain; padding: var(--space-12); background: var(--cool-mist);">
+      </div>
+      <div class="service-detail__content fade-in-up">
+        <span class="eyebrow">Indoor Air Quality</span>
+        <h2>Air Purification &amp; Humidity Control</h2>
+        <p>The air inside your home can be 5x more polluted than outside. We install whole-home air purifiers, UV light systems, and humidifiers/dehumidifiers that integrate with your HVAC system for cleaner, healthier air year-round.</p>
+        <ul class="service-detail__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Whole-Home Air Purifiers</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>UV Light Systems</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Humidifier Install</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dehumidifier Install</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Duct Cleaning</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Air Quality Testing</li>
+        </ul>
+        <div class="service-detail__cta">
+          <a href="contact.html" class="btn btn--primary btn--lg">Book Air Quality</a>
+          <a href="contact.html" class="btn btn--ghost-blue btn--lg">Free Assessment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist" id="water-heaters">
+  <div class="container">
+    <div class="service-detail">
+      <div class="service-detail__image fade-in-up">
+        <div class="service-detail__image-badge">Tankless Available</div>
+        <img src=".workbuddy/assets/awards/daikin-pro.png" alt="Water heater service" style="object-fit: contain; padding: var(--space-12); background: var(--white);">
+      </div>
+      <div class="service-detail__content fade-in-up">
+        <span class="eyebrow">Water Heaters</span>
+        <h2>Traditional &amp; Tankless Water Heaters</h2>
+        <p>No hot water? We repair and replace all brands, including Navien, Rinnai, and A.O. Smith. Considering tankless? We'll help you compare costs, energy savings, and rebates to find the right fit for your home and family.</p>
+        <ul class="service-detail__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Water Heater Repair</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tankless Installation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Traditional Tank Replacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Anode Rod Replacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Flush &amp; Maintenance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rebate Assistance</li>
+        </ul>
+        <div class="service-detail__cta">
+          <a href="contact.html" class="btn btn--primary btn--lg">Book Water Heater</a>
+          <a href="contact.html" class="btn btn--ghost-blue btn--lg">Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Process Steps
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="h2">Four simple steps to comfort.</h2>
+      <p class="body-lg">From first call to final check, we make it easy.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card fade-in-up">
+        <div class="process-card__number"></div>
+        <h4>Call or Book Online</h4>
+        <p>Tell us what's wrong or what you need. We'll schedule a same-day or next-day visit at a time that works for you.</p>
+      </div>
+      <div class="process-card fade-in-up">
+        <div class="process-card__number"></div>
+        <h4>Diagnose &amp; Quote</h4>
+        <p>Your tech arrives in a fully-stocked truck, diagnoses the issue, and gives you a flat-rate quote before any work begins.</p>
+      </div>
+      <div class="process-card fade-in-up">
+        <div class="process-card__number"></div>
+        <h4>Fix It Right</h4>
+        <p>Most repairs are done same-day. For installs, we'll schedule a clean, efficient installation with minimal disruption.</p>
+      </div>
+      <div class="process-card fade-in-up">
+        <div class="process-card__number"></div>
+        <h4>Follow-Up &amp; Care</h4>
+        <p>We follow up to make sure you're 100% satisfied. Join our maintenance plan for priority service and tune-ups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Special Offers
+     ============================================================ -->
+<section class="section section--mist" id="offers">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow">Special Offers</span>
+      <h2 class="h2">Save on your next service.</h2>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card fade-in-up">
+        <div class="offer-card__price">$79<small> service call</small></div>
+        <h3 class="offer-card__title">Diagnostic Visit</h3>
+        <p class="offer-card__desc">Flat-rate diagnostic visit from a NATE-certified tech. Includes inspection and written estimate.</p>
+        <div class="offer-card__cta">
+          <a href="contact.html">Claim Offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <div class="offer-card fade-in-up">
+        <div class="offer-card__price">0%<small> APR financing</small></div>
+        <h3 class="offer-card__title">System Installation</h3>
+        <p class="offer-card__desc">0% APR for 60 months on qualifying Trane system installations. Subject to credit approval.</p>
+        <div class="offer-card__cta">
+          <a href="contact.html">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+      <div class="offer-card fade-in-up">
+        <div class="offer-card__price">$99<small> flat rate</small></div>
+        <h3 class="offer-card__title">Drain Cleaning</h3>
+        <p class="offer-card__desc">Any single drain, cleared or it's free. Includes kitchen, bath, and laundry drains. No hidden fees.</p>
+        <div class="offer-card__cta">
+          <a href="contact.html">Book Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Brand Partners
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow">Brands We Install &amp; Service</span>
+      <h2 class="h2">Factory-authorized for the best.</h2>
+    </div>
+    <div class="brands-grid">
+      <div class="brand-logo"><img src=".workbuddy/assets/brands/trane.png" alt="Trane"></div>
+      <div class="brand-logo"><img src=".workbuddy/assets/brands/mitsubishi.png" alt="Mitsubishi Electric"></div>
+      <div class="brand-logo"><img src=".workbuddy/assets/brands/daikin.png" alt="Daikin"></div>
+      <div class="brand-logo"><img src=".workbuddy/assets/brands/carrier.png" alt="Carrier"></div>
+      <div class="brand-logo"><img src=".workbuddy/assets/brands/rinnai.png" alt="Rinnai"></div>
+      <div class="brand-logo"><img src=".workbuddy/assets/brands/navien.png" alt="Navien"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section section--mist">
+  <div class="container">
+    <div class="section-header section-header--center fade-in-up">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2">Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>Do you offer same-day service?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Yes. For most service calls booked before 2 PM, we can dispatch a technician the same day. Emergency calls are handled 24/7 &mdash; just call (800) 564-2611.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>How much does a diagnostic visit cost?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Our standard diagnostic visit is $79 flat. This includes a full inspection by a NATE-certified technician and a written estimate for any recommended repairs. No hidden fees.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>Do you offer financing for new systems?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Yes. We offer 0% APR financing for up to 60 months on qualifying Trane system installations, subject to credit approval. We also have flexible payment plans for plumbing and other services.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>What areas do you serve?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">We serve the greater Dayton, Columbus, and Cincinnati metro areas, including Northern Kentucky. See our <a href="contact.html">contact page</a> for specific service zones and phone numbers by location.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>Are your technicians licensed and insured?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Every Logan technician is NATE-certified, EPA-licensed, background-checked, and fully insured. We carry $2M general liability and workers' comp on every employee.</div>
+        </div>
+      </div>
+      <div class="faq-item fade-in-up" onclick="this.classList.toggle('faq-item--open')">
+        <div class="faq-item__question">
+          <span>Do you offer maintenance plans?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Yes. Our Logan Comfort Club includes bi-annual tune-ups (spring + fall), priority scheduling, 15% discount on all repairs, and no overtime charges. Plans start at $14.95/month.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     Emergency CTA
+     ============================================================ -->
+<section class="emergency-cta">
+  <div class="container">
+    <div class="fade-in-up">
+      <h2>HVAC or plumbing emergency?</h2>
+      <p>We're available 24/7. Don't wait &mdash; call now and we'll dispatch a technician right away.</p>
+      <a href="tel:8005642611" class="btn btn--lg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (800) 564-2611
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src=".workbuddy/assets/logo/logan-logo.png" alt="Logan Services">
+        <p>Family-owned home comfort company serving the Ohio Valley since 1969. Heating, cooling, plumbing, and indoor air quality &mdash; done right, by neighbors.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.45-5.18a2.78 2.78 0 0 0-1.95-2C18.88 4.35 12 4.35 12 4.35s-6.88 0-8.6.47a2.78 2.78 0 0 0-1.95 2C1 8.5 1 12 1 12s0 3.5.45 5.18a2.78 2.78 0 0 0 1.95 2c1.72.47 8.6.47 8.6.47s6.88 0 8.6-.47a2.78 2.78 0 0 0 1.95-2C23 15.5 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service.html#cooling">A/C Repair</a></li>
+          <li><a href="service.html#heating">Heating</a></li>
+          <li><a href="service.html#heating">Heat Pumps</a></li>
+          <li><a href="service.html#plumbing">Plumbing</a></li>
+          <li><a href="service.html#sewer">Sewer & Drain</a></li>
+          <li><a href="service.html#water-heaters">Water Heaters</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html#careers">Careers</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="service.html#offers">Special Offers</a></li>
+          <li><a href="#">Financing</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Maintenance Plans</a></li>
+          <li><a href="#">Filter Store</a></li>
+          <li><a href="#">Pay Online</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Service Areas</h4>
+        <ul>
+          <li><a href="contact.html#dayton">Dayton, OH</a></li>
+          <li><a href="contact.html#columbus">Columbus, OH</a></li>
+          <li><a href="contact.html#cincinnati">Cincinnati, OH</a></li>
+          <li><a href="contact.html#cincinnati">Northern Kentucky</a></li>
+          <li><a href="contact.html">All Areas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="footer__bottom-left">
+        &copy; 2025 Logan Services. All rights reserved.
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+      <div class="footer__badges">
+        <img src=".workbuddy/assets/awards/nate.png" alt="NATE Certified">
+        <img src=".workbuddy/assets/awards/google-guaranteed.png" alt="Google Guaranteed">
+        <img src=".workbuddy/assets/awards/trane-dealer.png" alt="#1 Trane Dealer">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/shared.js"></script>
+</body>
+</html>

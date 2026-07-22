@@ -1,6 +1,9 @@
 # Logan Services — Lead Generation Demo
 
-HVAC, plumbing & indoor air quality company landing page. Family-owned since 1969, serving Dayton, Columbus, Cincinnati & Northern Kentucky.
+Redesign demo for [Logan Services](https://www.logan-inc.com) — HVAC, plumbing & indoor air quality company. Family-owned since 1969, serving Dayton, Columbus, Cincinnati & Northern Kentucky.
+
+**Live Demo:** https://lead-demo-logan-inc-com.pages.dev
+**Original Site:** https://www.logan-inc.com
 
 ## Tech
 
@@ -15,4 +18,4 @@ Static HTML + CSS + vanilla JS. Single shared stylesheet (`assets/css/shared.css
 
 ## Deploy
 
-Static hosting — push to deploy on Cloudflare Pages.
+Cloudflare Pages — push to `main` triggers auto-deploy.
